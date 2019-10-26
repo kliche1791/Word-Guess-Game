@@ -2,3 +2,18 @@
     text-align: center;
     line-height: 2;
 }
+
+.backg{
+    background-color: whitesmoke;
+    opacity: 0.8;
+    border-radius: 15px;
+    
+}
+
+.backm{
+    margin-bottom: 25px;
+}
+
+body{
+    background-image: url(../images/stadium.jpg);
+}

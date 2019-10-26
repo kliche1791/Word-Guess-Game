@@ -25,7 +25,7 @@ function GameStart(){
     }
 
     if(randomWordL === "leonelmessi"){
-        document.getElementById("hint").innerHTML = "He plays for Barcelona and widely recognized as the best player in the world and rated by some commentators, coaches and players as the greatest footballer of all time.";
+        document.getElementById("hint").innerHTML = "He plays for Barcelona and is widely recognized as the best player in the world and rated by some commentators, coaches and players as the greatest footballer of all time.";
     }
 
     if(randomWordL === "jamesrodriguez"){
