@@ -9,6 +9,13 @@ var wrongGuess = [];
 var blanksAndCorrect = [];
 
 
+var ca = document.getElementById("cristiano");
+var ma = document.getElementById("messi");
+var ja = document.getElementById("james");
+var na = document.getElementById("neymar");
+var ga = document.getElementById("griezman");
+var pa = document.getElementById("mbappe");
+
 function GameStart(){
     randomWordL = words[Math.floor(Math.random()*words.length)];
     
@@ -100,6 +107,13 @@ function reset() {
     document.getElementById("reset").style.display = "none"; 
     document.getElementById("remain").innerHTML = guessesRem;
     document.getElementById("showgu").innerHTML = "  " + wrongGuess.join("  ");
+    document.getElementById("display").innerHTML = "";
+    ca.pause();
+    ma.pause();
+    ja.pause();
+    na.pause();
+    ga.pause();
+    pa.pause();
     GameStart();
 }
 
@@ -118,6 +132,8 @@ function winner(){
     
         wins++;
 
+        ca.play();
+
         document.getElementById("win").innerHTML = wins;
 
         console.log("entro");
@@ -133,6 +149,7 @@ function winner(){
         document.getElementById("reset").style.display = "inline-block"; 
 
         wins++;
+        ma.play();
 
         document.getElementById("win").innerHTML = wins;
 
@@ -148,6 +165,7 @@ function winner(){
         document.getElementById("reset").style.display = "inline-block"; 
     
         wins++;
+        ga.play();
 
         document.getElementById("win").innerHTML = wins;
 
@@ -163,6 +181,7 @@ function winner(){
         document.getElementById("reset").style.display = "inline-block"; 
     
         wins++;
+        ja.play();
 
         document.getElementById("win").innerHTML = wins;
 
@@ -178,6 +197,7 @@ function winner(){
         document.getElementById("reset").style.display = "inline-block"; 
     
         wins++;
+        na.play();
 
         document.getElementById("win").innerHTML = wins;
 
@@ -193,6 +213,7 @@ function winner(){
         document.getElementById("reset").style.display = "inline-block"; 
     
         wins++;
+        pa.play();
 
         document.getElementById("win").innerHTML = wins;
 
@@ -205,12 +226,15 @@ function winner(){
     }
 }
 
-
+function myFunction() {
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+  }
 
 function remaining(){
 
     if(guessesRem===0){
-        document.getElementById("display").innerHTML = "TRY AGAIN";
+        alert("YOU LOST, TRY AGAIN");
         reset();
     }
 }
