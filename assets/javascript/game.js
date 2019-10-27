@@ -1,4 +1,4 @@
-
+// Global Vars 
 var words = ["cristianoronaldo","leonelmessi","jamesrodriguez","griezman","neymar","mbappe"];
 var randomWordL = "";
 var splitWord = [];
@@ -8,7 +8,7 @@ var guessesRem = 10;
 var wrongGuess = [];
 var blanksAndCorrect = [];
 
-
+// vars for call the audio
 var ca = document.getElementById("cristiano");
 var ma = document.getElementById("messi");
 var ja = document.getElementById("james");
@@ -16,17 +16,22 @@ var na = document.getElementById("neymar");
 var ga = document.getElementById("griezman");
 var pa = document.getElementById("mbappe");
 
+// this function starts the game 
 function GameStart(){
+
+    // takes a random argument of the array
     randomWordL = words[Math.floor(Math.random()*words.length)];
     
     splitWord = randomWordL.split("");
 
     blanks = splitWord.length;
 
+    // for loop for put _ depends of the length of the random argument 
     for (var i=0; i < blanks; i++){
         blanksAndCorrect.push("_");
     }
 
+    //Conditional that shows a hint  depend of the name of the argument
     if(randomWordL === "cristianoronaldo"){
         document.getElementById("hint").innerHTML = "He plays for Juventus and won five Ballon d’Or awards (player of the year).";
     }
@@ -52,27 +57,34 @@ function GameStart(){
     }
 
 
+    //prints the hide name.
     document.getElementById("currentWord").innerHTML = "  " + blanksAndCorrect.join("  ");
     console.log(randomWordL);
-    console.log(splitWord);
-    console.log(blanks);
     console.log(blanksAndCorrect);
 }
 
+
+//Function that check the letters with the hide name
 function checkLetters(guesserPress){
+
+    // begin with a false argument;
     var letterW = false;
+
+     //check if the letter pressed is the same that the letter in the array and give a true on letterW
     for (var i = 0; i < blanks; i++) {
-     
+
+        
         if (randomWordL[i] == guesserPress) {
 
-
+            
             letterW = true;
-            //console.log(randomWordL[i]);
+            
             
         } 
 
     }
 
+    //if letter is true start showing the letter correct
     if(letterW){
 
         for(var i=0; i < blanks; i++){
@@ -82,12 +94,16 @@ function checkLetters(guesserPress){
                 document.getElementById("currentWord").innerHTML = "  " + blanksAndCorrect.join("  ");
             }
         }
+
+    // if not, start to subtract by 1 the var guessesRem and shows the incorrect letter    
     } else {
         wrongGuess.push(guesserPress);
 
                 document.getElementById("showgu").innerHTML = "  " + wrongGuess.join("  ");
                 console.log(wrongGuess);
+
                 guessesRem--;
+
                 document.getElementById("remain").innerHTML = guessesRem;
                 console.log(guessesRem);
      
@@ -99,6 +115,8 @@ function checkLetters(guesserPress){
 
 }
 
+
+// function that reset all the values on the game
 function reset() {
     guessesRem= 10;
     wrongGuess = [];
@@ -117,11 +135,18 @@ function reset() {
     GameStart();
 }
 
+
+//Function that starts when the name is guessed
 function winner(){
+   
+   //combine the arguments on the array blanksAndCorrect ant convert into a string 
    var  correctW = blanksAndCorrect.join("");
     console.log(correctW);
+
+    //Conditional that if the two var are the same, enter to show the correct player depend of the correcW variable
     if(randomWordL===correctW){
         
+        //show the image, name, play sound, count wins and active the button play again depends of the name on CorrectW
         if(correctW === "cristianoronaldo"){
 
         document.getElementById("img").src = "./assets/images/cristiano_ronaldo.jpg";
@@ -226,11 +251,8 @@ function winner(){
     }
 }
 
-function myFunction() {
-    var popup = document.getElementById("myPopup");
-    popup.classList.toggle("show");
-  }
 
+//Function that check if the guessrem is 0 reset the game
 function remaining(){
 
     if(guessesRem===0){
@@ -241,9 +263,10 @@ function remaining(){
 
 
 
-
+//start the game 
 GameStart();
 
+//if the user press a key active the other functions 
 document.onkeyup = function(event) {
     var guesse = String.fromCharCode(event.keyCode).toLowerCase();
    checkLetters(guesse);
